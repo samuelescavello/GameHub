@@ -1,0 +1,99 @@
+.page {
+  display: flex;
+  justify-content: center; /* centra orizzontalmente */
+  /* align-items: center;  centra verticalmente (se vuoi togli il commento) */
+  min-height: 100vh; /* occupa l'altezza schermo */
+  padding: 40px 16px; /* spazio sopra/sotto e un po' sui lati */
+}
+
+/* Contenitore principale: griglia centrata con max-width */
+.container {
+  display: grid;
+  /* massimo 3 colonne, ogni colonna minimo 280px e può espandersi */
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 32px;
+
+  max-width: 1200px; /* limita la larghezza complessiva */
+  width: 100%;
+  margin: 0 auto; /* centra orizzontalmente */
+  padding: 20px 0;
+  justify-items: center; /* centra gli elementi all'interno di ogni cella */
+}
+
+/* Card: prende tutta la cella ma ha un max per non essere troppo larga */
+.card {
+  width: 100%; /* occupa la cella */
+  max-width: 340px; /* larghezza visiva della card */
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+/* Titolo della card */
+.card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+/* Immagine della card: non si deforma grazie a object-fit,
+   altezza fissa per uniformare le card */
+.card img {
+  width: 100%;
+  height: 220px; /* altezza fissa per tutte le immagini */
+  object-fit: cover; /* ritaglia l'immagine mantenendo rapporto */
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+/* Testo interno */
+.card p {
+  font-size: 0.95rem;
+  margin: 6px 0;
+  color: #222;
+}
+
+/* Piccolo aggiustamento se vuoi etichette diverse */
+.card .meta {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Responsive: tablet — 2 colonne */
+@media (max-width: 960px) {
+  .container {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .card img {
+    height: 200px;
+  }
+}
+
+/* Mobile: 1 colonna */
+@media (max-width: 560px) {
+  /* Se non vuoi il centramento verticale su mobile, toglilo dalla .page */
+  .page {
+    /* align-items: flex-start; */
+    padding: 20px 12px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 10px 0;
+  }
+
+  .card {
+    max-width: 520px; /* lasciare la card fluida su mobile */
+  }
+
+  .card img {
+    height: 180px;
+  }
+}
