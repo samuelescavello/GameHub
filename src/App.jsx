@@ -1,7 +1,12 @@
 import "./App.css";
+import ShowCards from "./Components/ShowCards";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ShowCards />
+    </>
+  );
 }
 
 export default App;
